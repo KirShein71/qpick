@@ -1,0 +1,7 @@
+ [
+    {"imageUrl": "/img/glass_case.svg", "title": "Glass case", "price": 30, "id": "1" },
+    {"imageUrl": "/img/silicon_case.svg", "title": "Silicon case", "price": 18, "id": "2" },
+    {"imageUrl": "/img/leather_case.svg", "title": "Leather case", "price": 42, "id": "3" }
+    
+
+ ]

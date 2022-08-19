@@ -1,0 +1,44 @@
+.banner {
+    margin-top: 30px;
+    max-width: 1110px;
+    height: 197px;
+    background: #101010;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    position: relative;
+    @media(max-width:1200px) {
+        max-width: 870px;
+    }
+    @media(max-width:991px) {
+        max-width: 662px;
+    }
+    @media(max-width:768px) {
+        display: none;
+    }
+
+    &__content {
+        display: flex;
+        justify-content: start;
+
+    }
+    &__title {
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 37px;
+        text-align: center;
+        color: #FFFFFF;
+        width: 643px;
+        padding-top: 58px;
+        padding-left: 50px;
+    }
+    &__logo {
+       img {
+            position: absolute;
+            top: -13px;
+            display: block;
+            @media(max-width:1200px) {
+                display: none;
+            }
+       }
+    }
+}
