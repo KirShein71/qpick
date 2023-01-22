@@ -20,8 +20,6 @@ import './scss/app.scss';
 function App() {
     const [carts, setCarts] = React.useState([])
     const [favorites, setFavorites] = React.useState([])
-    const [items, setItems] = React.useState ([])
-    const [isLoading, setIsLoading] = React.useState(true) 
     const [searchValue, setSearchValue] = React.useState('')
 
     
@@ -37,19 +35,6 @@ function App() {
     }, []);
 
 
-    React.useEffect(()=> {
-        const search = searchValue ? `search=${searchValue}` : '';
-        const axiosData = async () => {
-            try {
-                const res = await axios.get(`https://62f4d568535c0c50e7634e7f.mockapi.io/items?&${search}`)
-                setIsLoading(false);    
-                setItems(res.data);
-                } catch {
-                    alert('error')
-                };
-        }
-            axiosData()
-    }, [searchValue])
 
     const onAddToFavorite = (obj) => {
         if (favorites.find((favObj) => favObj.id === obj.id)) {
@@ -76,7 +61,7 @@ function App() {
     return (
         <div className="wrapper">
             <div className='container'>
-            <AppContext.Provider value={{items, favorites, carts, onAddToFavorite, onAddToCart, searchValue, setSearchValue, isLoading,setIsLoading}}>
+            <AppContext.Provider value={{favorites, carts, onAddToFavorite, onAddToCart, searchValue, setSearchValue}}>
                 <Header/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
