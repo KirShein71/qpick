@@ -37,6 +37,11 @@
         padding-top: 25px;
         padding-left: 15px;
     }
+
+    &__top {
+        display: flex;
+        justify-content: space-around;
+    }
     &__items {
         margin-left: 25px;
         margin-top: 25px;

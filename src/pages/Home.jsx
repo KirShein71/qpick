@@ -3,6 +3,7 @@ import Sceleton from '../components/Sceleton';
 import Banner from '../components/Banner';
 import Card from '../components/Card';
 import Categories from '../components/Categories';
+import Sort from '../components/Sort';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategoryId } from '../redax/slices/categorySlice';
 import AppContext from '../context';
@@ -16,6 +17,7 @@ function Home()  {
     const {onAddToFavorite} = React.useContext(AppContext)
     const {onAddToCart} = React.useContext(AppContext)
     const categoryId = useSelector((state)=>state.category.categoryId)
+    const sortType = useSelector((state) => state.sort.sort.sortProperty)
     const dispatch = useDispatch()
     
     const onClickCategory = (id) => {
@@ -23,11 +25,12 @@ function Home()  {
     }
 
     React.useEffect(()=> {
+        const sortBy = sortType.replace('-', '');
         const search = searchValue ? `search=${searchValue}` : '';
         const category = categoryId > 0 ? `category=${categoryId}` : '';
         const axiosData = async () => {
             try {
-                const res = await axios.get(`https://62f4d568535c0c50e7634e7f.mockapi.io/items?&${search}${category}`)
+                const res = await axios.get(`https://62f4d568535c0c50e7634e7f.mockapi.io/items?&${search}${category}&sortBy=${sortBy}`)
                 setIsLoading(false);    
                 setItems(res.data);
                 } catch {
@@ -35,7 +38,7 @@ function Home()  {
                 };
         }
             axiosData()
-    }, [searchValue, categoryId])
+    }, [searchValue, categoryId, sortType])
         
 
 
@@ -44,7 +47,10 @@ function Home()  {
         <Banner/>
         <div className='content'>
             <div className='content__title'>Товары</div>
-            <Categories value={categoryId} onClickCategory={onClickCategory}/>
+            <div className='content__top'>
+                <Categories value={categoryId} onClickCategory={onClickCategory}/>
+                <Sort/>
+            </div>
             <div className='content__items'>
             {isLoading 
                     ? [...new Array(6)].map((_, index) => <Sceleton key={index}/>)
