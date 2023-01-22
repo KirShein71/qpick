@@ -21,6 +21,7 @@ function App() {
     const [carts, setCarts] = React.useState([])
     const [favorites, setFavorites] = React.useState([])
     const [items, setItems] = React.useState ([])
+    const [isLoading, setIsLoading] = React.useState(true) 
     const [searchValue, setSearchValue] = React.useState('')
 
     
@@ -41,7 +42,8 @@ function App() {
         const axiosData = async () => {
             try {
                 const res = await axios.get(`https://62f4d568535c0c50e7634e7f.mockapi.io/items?&${search}`)
-                    setItems(res.data)
+                setIsLoading(false);    
+                setItems(res.data);
                 } catch {
                     alert('error')
                 };
@@ -57,12 +59,13 @@ function App() {
         setFavorites((prev) => [...prev, obj]);}
     }
 
-   
     const onAddToCart = (obj) => {
         axios.post('https://62f4d568535c0c50e7634e7f.mockapi.io/cart', obj);
         setCarts((prev) => [...prev, obj]);
 
     }
+   
+    
         
     const onRemoveItems =  (id) => {
         axios.delete(`/https://62f4d5deac59075124c4e860.mockapi.io/cart/${id}`);
@@ -73,15 +76,15 @@ function App() {
     return (
         <div className="wrapper">
             <div className='container'>
-            <AppContext.Provider value={{items, favorites, carts, onAddToFavorite, onAddToCart, searchValue, setSearchValue}}>
+            <AppContext.Provider value={{items, favorites, carts, onAddToFavorite, onAddToCart, searchValue, setSearchValue, isLoading,setIsLoading}}>
                 <Header/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/condition" element={<Condition />}/>
                     <Route path="/contact" element={<Contact />}/>
                     <Route path="/favorite" element={<Favorite/>}/>
-                    <Route path="/cart" element={<Cart
-                        onRemove={onRemoveItems} 
+                    <Route path="/cart" 
+                        element={<Cart onRemove={onRemoveItems} 
                     />}/>
                     <Route path="/chekout" element={<Chekout/>}/>
                     <Route path="/framed" element={<Framed/>}/>
