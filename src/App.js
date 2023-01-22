@@ -21,12 +21,11 @@ function App() {
     const [carts, setCarts] = React.useState([])
     const [favorites, setFavorites] = React.useState([])
     const [items, setItems] = React.useState ([])
+    const [searchValue, setSearchValue] = React.useState('')
 
     
     React.useEffect(() => {
-        axios.get('https://62f4d5deac59075124c4e860.mockapi.io/items').then((res) => {
-            setItems(res.data);
-        });
+        
         axios.get('https://62f4d5deac59075124c4e860.mockapi.io/favorites').then((res) => {
             setFavorites(res.data);
         });
@@ -36,17 +35,31 @@ function App() {
         
     }, []);
 
+
+    React.useEffect(()=> {
+        const search = searchValue ? `search=${searchValue}` : '';
+        const axiosData = async () => {
+            try {
+                const res = await axios.get(`https://62f4d568535c0c50e7634e7f.mockapi.io/items?&${search}`)
+                    setItems(res.data)
+                } catch {
+                    alert('error')
+                };
+        }
+            axiosData()
+    }, [searchValue])
+
     const onAddToFavorite = (obj) => {
-        if (favorites.find((favObj) => favObj.id == obj.id)) {
-            axios.delete(`/https://62f4d5deac59075124c4e860.mockapi.io/favorites/${obj.id}`);
+        if (favorites.find((favObj) => favObj.id === obj.id)) {
+            axios.delete(`/https://63cd415efba6420d4d6b70a0.mockapi.io/favorites/${obj.id}`);
             setFavorites((prev) => prev.filter((items) => items.id !== obj.id ))
-        } else {axios.post('https://62f4d5deac59075124c4e860.mockapi.io/favorites', obj);
+        } else {axios.post('https://63cd415efba6420d4d6b70a0.mockapi.io/favorites', obj);
         setFavorites((prev) => [...prev, obj]);}
     }
 
    
     const onAddToCart = (obj) => {
-        axios.post('https://62f4d5deac59075124c4e860.mockapi.io/cart', obj);
+        axios.post('https://62f4d568535c0c50e7634e7f.mockapi.io/cart', obj);
         setCarts((prev) => [...prev, obj]);
 
     }
@@ -60,24 +73,21 @@ function App() {
     return (
         <div className="wrapper">
             <div className='container'>
+            <AppContext.Provider value={{items, favorites, carts, onAddToFavorite, onAddToCart, searchValue, setSearchValue}}>
                 <Header/>
-                <AppContext.Provider value={{items, favorites, carts, onAddToFavorite, onAddToCart}}>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/condition" element={<Condition />}/>
                     <Route path="/contact" element={<Contact />}/>
                     <Route path="/favorite" element={<Favorite/>}/>
                     <Route path="/cart" element={<Cart
-                        
                         onRemove={onRemoveItems} 
                     />}/>
                     <Route path="/chekout" element={<Chekout/>}/>
                     <Route path="/framed" element={<Framed/>}/>
                 </Routes>
                 </AppContext.Provider>
-                <Footer
-                    
-                />
+                <Footer/>
             </div>
         </div>
     )
