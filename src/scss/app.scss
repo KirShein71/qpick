@@ -41,6 +41,30 @@
     &__top {
         display: flex;
         justify-content: space-around;
+        @media (max-width: 1200px) {
+            .categories {
+                width: 100%;
+                // overflow: scroll - это скоролинг, когда объекты перемещаеются по скролу
+                overflow: auto;
+    
+                ul {
+                    width: 785px;
+                }
+            }
+    
+            .sort {
+                padding-left: 20px;
+                &__text {
+                    display: none;
+                }
+            }   }
+    
+        @media (max-width: 767px) {
+            .categories{
+                margin-top: 30px;
+            }
+            flex-direction: column-reverse;
+        }
     }
     &__items {
         margin-left: 25px;

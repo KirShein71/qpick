@@ -2,9 +2,10 @@ import React from "react";
 import Search from "./Search";
 import {Link} from 'react-router-dom';
 
+
+
 function Header() {
-    const list = ['Iphone 12', 'Iphone 12 Max', 'Iphone 13', 'Iphone 13 Max', 'Iphone 13 Pro Max', 'Iphone 14']
-    
+
 
     return (
         

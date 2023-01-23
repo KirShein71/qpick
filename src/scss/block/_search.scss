@@ -6,6 +6,9 @@
     font-size: 16px;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 320px) {
+        width: 175px;
+    }
     
     input {
         border: none;
