@@ -6,8 +6,12 @@ function Sort() {
     const dispatch = useDispatch();
     const sort = useSelector(state => state.sort.sort)
     const list = [
-        {name: 'алфавиту (а-я)', sortProperty: 'title'},
-        {name: 'алфавиту (я-а)', sortProperty: '-title'}
+        {name: 'алфавиту (а-я)', sortProperty: '-title'},
+        {name: 'алфавиту (я-а)', sortProperty: 'title'},
+        {name: 'популярности', sortProperty: 'raiting'}, 
+        {name: 'цене(возрастание)', sortProperty: '-price'},
+        {name: 'цене(убывание)', sortProperty: 'price'}
+        
     ]
     const [open, setOpen] = React.useState(false)
     const onClickListItem = (obj) => {

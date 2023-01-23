@@ -26,11 +26,12 @@ function Home()  {
 
     React.useEffect(()=> {
         const sortBy = sortType.replace('-', '');
+        const order = sortType.includes('-') ? 'asc' : 'desc';
         const search = searchValue ? `search=${searchValue}` : '';
         const category = categoryId > 0 ? `category=${categoryId}` : '';
         const axiosData = async () => {
             try {
-                const res = await axios.get(`https://62f4d568535c0c50e7634e7f.mockapi.io/items?&${search}${category}&sortBy=${sortBy}`)
+                const res = await axios.get(`https://62f4d568535c0c50e7634e7f.mockapi.io/items?&${search}${category}&sortBy=${sortBy}&order=${order}`)
                 setIsLoading(false);    
                 setItems(res.data);
                 } catch {

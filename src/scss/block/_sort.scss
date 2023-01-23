@@ -1,5 +1,48 @@
 .sort {
+    position: relative;
     display: flex;
     justify-content: space-around;
-    margin-top: 15px;
+    margin-top: 28px;
+    &__text {
+        font-size: 15px;
+        font-weight: 600;
+        margin-right: 8px;
+    }
+
+    span {
+        color: #fe5f1e;
+        cursor: pointer;
+    }
+
+    &__popup {
+        position: absolute;
+        right: 0;
+        margin-top: 25px;
+        background: #ffffff;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 10px 0;
+        width: 180px;
+    }
+    ul {
+        overflow: hidden;
+        list-style: none;
+        padding: 0;
+        li {
+          padding: 12px 20px;
+          cursor: pointer;
+          
+  
+          &.active,
+          &:hover {
+            background: rgba(254, 95, 30, 0.05);
+          }
+  
+          &.active {
+            font-weight: bold;
+            color: #fe5f1e;
+          }
+        }
+      }
 }
