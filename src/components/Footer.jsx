@@ -15,9 +15,7 @@ function Footer() {
                         <Link to='/cart'>
                             <div className="footer__cart">Корзина</div>
                         </Link>
-                        <Link to="/contact">
                             <div className="footer__contact">Контакты</div>
-                        </Link>
                     </div>
                     <div className="footer__service">
                         <Link to="/condition">
