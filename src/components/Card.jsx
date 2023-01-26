@@ -27,7 +27,7 @@ function Card({imageUrl, title, price, id, onClickFavorite, onFavorite, favorite
                 </div>
             </div>
             <div className="card__image">
-                <img width={251} height={182} src={imageUrl} /> 
+                <img width={251} height={182}  src={imageUrl} /> 
             </div>
             <div className="card__pricetag">
                 <div className="card__title">{title}</div>
@@ -38,3 +38,4 @@ function Card({imageUrl, title, price, id, onClickFavorite, onFavorite, favorite
 };
 
 export default Card;
+
