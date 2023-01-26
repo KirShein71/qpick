@@ -13,7 +13,7 @@
     border-radius: 10px;
     max-width: 1440px;
     @media(max-width: 450px) {
-    width: calc(122vw - 100px);
+        width: calc(130vw - 168px);
         
     }
   }
@@ -56,18 +56,22 @@
                 }
             }
     
-            .sort {
+              
+        }.sort {
                 padding-left: 20px;
-                &__text {
-                    display: none;
-                }
-            }   }
+            } 
     
         @media (max-width: 767px) {
             .categories{
                 margin-top: 30px;
             }
-            flex-direction: column-reverse;
+            flex-direction: column;
+
+            .sort {
+                padding-left: 60px;
+                display: flex;
+                justify-content: flex-start;
+            } 
         }
     }
     &__items {
@@ -89,7 +93,7 @@
             margin-left: 5px;
         }
         @media (max-width: 535px) {
-            grid-template-columns: repeat(1, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             margin-left: 55px;
         }
         @media (max-width: 320px) {
