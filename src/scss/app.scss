@@ -9,9 +9,13 @@
     width: calc(105vw - 100px);
     max-height: 100%;
     background: #EAEAEA;
-    margin: 50px auto;
+    margin: 10px auto;
     border-radius: 10px;
     max-width: 1440px;
+    @media(max-width: 170px) {
+    width: calc(122vw - 100px);
+        
+    }
   }
 
 .container {
