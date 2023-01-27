@@ -4,6 +4,10 @@
         font-size: 20px;
         color: #1C1C27;
         padding-top: 52px;
+
+        @media (max-width: 450px) {
+            text-align: center;
+        }
         
     }
 
@@ -20,17 +24,21 @@
         @media (max-width: 535px) {
             margin-left: 5px;
         }
+
+        @media (max-width: 450px) {
+            margin-left: 30px;
+        }
     }
     
     .chekout-card {
         width: 445px;
-        height: 513px;
+        height: 350px;
         background: #FFFFFF;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
         border-radius: 30px;
         padding: 23px 38px 32px 38px;
         @media (max-width: 535px) {
-            width: 350px;
+            width: 250px;
         }
         @media (max-width: 320px) {
             width: 145px;
@@ -59,21 +67,6 @@
             }
         }
 
-        &__image {
-            margin-top: 20px;
-            margin-left: 15px;
-            @media (max-width: 535px) {
-                margin-left: -25px;
-            }
-            @media (max-width: 320px) {
-                margin-top: -20px;
-            }
-            img {
-                @media (max-width: 320px) {
-                    width: 100%;
-                }
-            }
-        }
 
         &__subtitle {
             font-weight: 500;
@@ -100,6 +93,9 @@
             @media (max-width: 535px) {
                 width: 300px;
             }
+            @media (max-width: 450px) {
+                width: 200px;
+            }
             @media (max-width: 320px) {
                 width: 150px;
             }
@@ -119,6 +115,9 @@
             outline: none;
             @media (max-width: 535px) {
                 width: 300px;
+            }
+            @media (max-width: 450px) {
+                width: 200px;
             }
             @media (max-width: 320px) {
                 width: 150px;
@@ -141,6 +140,10 @@
             @media (max-width: 535px) {
                 width: 100px;
             }
+            @media (max-width: 450px) {
+                width: 80px;
+            }
+
             
         }
 
@@ -159,9 +162,11 @@
             outline: none;
             @media (max-width: 535px) {
                 width: 100px;
-            }
-            @media (max-width: 535px) {
                 margin-left: 0;
+            }
+            @media (max-width: 450px) {
+                width: 80px;
+                margin-left: 10px;
             }
         
             
@@ -183,6 +188,9 @@
             @media (max-width: 535px) {
                 width: 100px;
             }
+            @media (max-width: 450px) {
+                width: 80px;
+            }
            
         
             
@@ -203,6 +211,9 @@
             padding: 15px 20px;
             @media (max-width: 535px) {
                 width: 350px;
+            }
+            @media (max-width: 450px) {
+                width: 250px;
             }
             @media (max-width: 320px) {
                 width: 145px;
@@ -231,52 +242,6 @@
             }
         }
 
-        &__payment {
-            margin-top: 15px;
-            width: 444px;
-            height: 127px;
-            background: #FFFFFF;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 30px;
-            padding: 15px;
-            @media (max-width: 535px) {
-                width: 350px;
-            }
-            @media (max-width: 320px) {
-                width: 145px;
-            }
-           
-
-            &-title {
-                font-weight: 600;
-                font-size: 20px;
-                color: #000000;
-                @media (max-width: 320px) {
-                    font-size: 12px;
-                }
-            }
-
-            &-content {
-                display: flex;
-                justify-content: left;
-                margin-top: 15px;
-                
-                p {
-                    font-weight: 500;
-                    font-size: 15px;
-                    color: #000000;
-                    padding-left: 9px;
-                }
-
-                img {
-                    display: block;
-                    margin-top: 15px;
-                }
-            }
-
-
-        }
-
         &__contact {
             margin-top: 20px;
             width: 444px;
@@ -287,6 +252,9 @@
             padding: 15px;
             @media (max-width: 535px) {
                 width: 350px;
+            }
+            @media (max-width: 450px) {
+                width: 250px;
             }
             @media (max-width: 320px) {
                 width: 145px;
@@ -317,6 +285,9 @@
                 outline: none;
                 @media (max-width: 535px) {
                     width: 300px;
+                }
+                @media (max-width: 450px) {
+                    width: 200px;
                 }
                 @media (max-width: 320px) {
                     width: 130px;

@@ -37,13 +37,10 @@ function Cart ({onRemove} )  {
                 </div>
                 <div className='cart-delivery'>
                     <div className='cart-delivery__card'>
-                        <div className='cart-delivery__title'>Доставка</div>
-                        <div className='cart-delivery__image'>
-                        <img width={584} height={173} src='./img/karta.svg' alt='karta' />
-                        </div>
+                        <div className='cart-delivery__title'>Способ получения</div>
                         <div className='cart-delivery__bottom'>
-                            <div className='cart-delivery__bottom-title'>Доставка курьером</div>  
-                            <div className='cart-delivery__bottom-price'>15$</div>
+                            <div className='cart-delivery__bottom-title'>Доставка курьером</div> 
+                            <div className='cart-delivery__bottom-price'>15$</div> 
                         </div>
                     </div>
                 </div>

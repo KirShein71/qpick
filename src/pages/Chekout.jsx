@@ -18,9 +18,6 @@ function Chekout () {
                         <div className='chekout-card__title'>Доставка курьером</div>
                         <div className='chekout-card__price'>15$</div>
                     </div>
-                    <div className='chekout-card__image'>
-                        <img width={400} height={146} src='./img/chekout__cart.svg' alt='image' />
-                    </div>
                     <div className='chekout-card__subtitle'>Адрес доставки</div>
                     <form>
                         <input className='chekout-card__city' name="name" required placeholder='Город' type="text" />
@@ -48,17 +45,6 @@ function Chekout () {
                         <div className='chekout-items__order-content'>
                             <div className='chekout-items__order-subtitle'>К оплате</div>
                             <div className='chekout-items__order-price'>{totalPrice}$</div>
-                        </div>
-                    </div>
-                    <div className='chekout-items__payment'>
-                        <div className='chekout-items__payment-title'>Способ оплаты</div>
-                        <div className='chekout-items__payment-content'>
-                            <img width={17} height={16} src='./img/visa_payment.svg' alt='visa'/>
-                            <p>Счет на kaspi.kz</p>
-                        </div>
-                        <div className='chekout-items__payment-content'>
-                            <img width={17} height={16} src='./img/promokod.svg' alt='promocode'/>
-                            <p>Есть промокод?</p>
                         </div>
                     </div>
                     <div className='chekout-items__contact'>
