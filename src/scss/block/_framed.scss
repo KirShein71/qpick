@@ -16,10 +16,11 @@
     @media (max-width: 767px) {
         width: 400px;
     }
-    @media (max-width: 320px) {
+    @media (max-width: 450px) {
         width: 226px;
         padding-top: 10px;
     }
+    
 
     &__text {
         font-weight: 600;
