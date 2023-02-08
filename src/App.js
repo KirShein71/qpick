@@ -4,7 +4,6 @@ import axios from 'axios';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import Condition from './pages/Сondition';
 import Favorite from './pages/Favorite';
 import Cart from './pages/Cart'
 import Chekout from './pages/Chekout';
@@ -64,7 +63,6 @@ function App() {
                 <Header/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="/condition" element={<Condition />}/>
                     <Route path="/favorite" element={<Favorite/>}/>
                     <Route path="/cart" 
                         element={<Cart onRemove={onRemoveItems} 
