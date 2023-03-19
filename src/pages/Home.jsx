@@ -39,6 +39,7 @@ function Home()  {
                 };
         }
             axiosData()
+            window.scrollTo(0,0);
     }, [searchValue, categoryId, sortType])
         
 
