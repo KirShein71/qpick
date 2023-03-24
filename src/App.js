@@ -26,46 +26,46 @@ function App() {
         axios.get('https://62f4d5deac59075124c4e860.mockapi.io/favorites').then((res) => {
             setFavorites(res.data);
         });
-        axios.get('https://62f4d5deac59075124c4e860.mockapi.io/cart').then((res) => {
-            setCarts(res.data);
-        });
+        // axios.get('https://62f4d5deac59075124c4e860.mockapi.io/cart').then((res) => {
+        //     setCarts(res.data);
+        // });
         
     }, []);
 
 
 
-    const onAddToFavorite = (obj) => {
-        if (favorites.find((favObj) => favObj.id === obj.id)) {
-            axios.delete(`/https://63cd415efba6420d4d6b70a0.mockapi.io/favorites/${obj.id}`);
-            setFavorites((prev) => prev.filter((items) => items.id !== obj.id ))
-        } else {axios.post('https://63cd415efba6420d4d6b70a0.mockapi.io/favorites', obj);
-        setFavorites((prev) => [...prev, obj]);}
-    }
+    // const onAddToFavorite = (obj) => {
+    //     if (favorites.find((favObj) => favObj.id === obj.id)) {
+    //         axios.delete(`/https://63cd415efba6420d4d6b70a0.mockapi.io/favorites/${obj.id}`);
+    //         setFavorites((prev) => prev.filter((items) => items.id !== obj.id ))
+    //     } else {axios.post('https://63cd415efba6420d4d6b70a0.mockapi.io/favorites', obj);
+    //     setFavorites((prev) => [...prev, obj]);}
+    // }
 
-    const onAddToCart = (obj) => {
-        axios.post('https://62f4d568535c0c50e7634e7f.mockapi.io/cart', obj);
-        setCarts((prev) => [...prev, obj]);
+    // const onAddToCart = (obj) => {
+    //     axios.post('https://62f4d568535c0c50e7634e7f.mockapi.io/cart', obj);
+    //     setCarts((prev) => [...prev, obj]);
 
-    }
+    // }
    
     
         
-    const onRemoveItems =  (id) => {
-        axios.delete(`/https://62f4d5deac59075124c4e860.mockapi.io/cart/${id}`);
-        setCarts((prev) => prev.filter((items) => items.id !== id ));
-    }
+    //  const onRemoveItems =  (id) => {
+    //      axios.delete(`/https://62f4d5deac59075124c4e860.mockapi.io/cart/${id}`);
+    //      setCarts((prev) => prev.filter((items) => items.id !== id ));
+    //  }
 
     
     return (
         <div className="wrapper">
             <div className='container'>
-            <AppContext.Provider value={{favorites, carts, onAddToFavorite, onAddToCart, searchValue, setSearchValue}}>
+            <AppContext.Provider value={{favorites, carts, searchValue, setSearchValue}}>
                 <Header/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/favorite" element={<Favorite/>}/>
                     <Route path="/cart" 
-                        element={<Cart onRemove={onRemoveItems} 
+                        element={<Cart 
                     />}/>
                     <Route path="/chekout" element={<Chekout/>}/>
                     <Route path="/framed" element={<Framed/>}/>

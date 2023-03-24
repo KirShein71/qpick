@@ -5,6 +5,7 @@ import {setSort} from '../redax/slices/sortSlice'
 function Sort() {
     const dispatch = useDispatch();
     const sort = useSelector(state => state.sort.sort)
+    const sortRef = React.useRef( )
     const list = [
         {name: 'алфавиту (а-я)', sortProperty: '-title'},
         {name: 'алфавиту (я-а)', sortProperty: 'title'},
@@ -19,9 +20,24 @@ function Sort() {
         setOpen(false);
     }
 
+    React.useEffect(()=>{
+        const hadleClickOutside = (event) => {
+            if (!event.path.includes(sortRef.current)) {
+                setOpen(false)
+                console.log('click')
+            }
+        };
+
+        document.body.addEventListener('click', hadleClickOutside)
+
+        return () => {
+            document.body.removeEventListener('click', hadleClickOutside)
+        }
+    })
+
 
     return (
-        <div className="sort">
+        <div ref={sortRef} className="sort">
             <div className="sort__text">Сортировка по:</div>
             <span onClick={() => setOpen(!open)}>{sort.name}</span>
             {open && (

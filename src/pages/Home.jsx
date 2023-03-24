@@ -6,8 +6,10 @@ import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategoryId } from '../redax/slices/categorySlice';
+import { useNavigate } from 'react-router-dom';
 import AppContext from '../context';
 import axios from 'axios';
+import qs from 'qs';
 
 
 function Home()  {
@@ -19,10 +21,14 @@ function Home()  {
     const categoryId = useSelector((state)=>state.category.categoryId)
     const sortType = useSelector((state) => state.sort.sort.sortProperty)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const isMounted = React.useRef(false)
     
     const onClickCategory = (id) => {
         dispatch(setCategoryId(id));
     }
+
+ 
 
     React.useEffect(()=> {
         const sortBy = sortType.replace('-', '');
@@ -41,6 +47,18 @@ function Home()  {
             axiosData()
             window.scrollTo(0,0);
     }, [searchValue, categoryId, sortType])
+
+    React.useEffect(()=>{
+        if (isMounted.current) {
+            const  queryString = qs.stringify({
+                categoryId,
+                sortType,   
+            })
+            navigate(`?${queryString}`);
+        }
+        isMounted.current = true;
+    },[categoryId, sortType])
+    
         
 
 

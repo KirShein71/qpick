@@ -1,11 +1,12 @@
 import React from "react";
 import Search from "./Search";
 import {Link} from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 
 
 function Header() {
-
+    const {items} = useSelector((state)=>state.cart)
 
     return (
         
@@ -26,6 +27,7 @@ function Header() {
                             <div className="header-logo__cart">
                                 <img src="./img/logo_cart.svg" alt="logo" />
                             </div>
+                            <span>{items.length}</span>
                         </Link>
                     </div>
                 </div>

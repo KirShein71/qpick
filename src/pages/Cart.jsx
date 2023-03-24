@@ -1,35 +1,47 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import AppContext from '../context';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeItem } from '../redax/slices/cartSlice';
+import CartEmpty from '../components/CartEmpty';
 
 
 
-function Cart ({onRemove} )  {
+function Cart ({id} )  {
     const {carts} = React.useContext(AppContext)
-    const totalPrice = carts.reduce((prev, obj)=>obj.price+prev, 15)
+    const totalPrice = carts.reduce((items, obj)=>obj.price+items, 15)
+    const items = useSelector((state) => state.cart.items)
+    const dispatch = useDispatch()
+
+    const onClickRemove = () => {
+        if (window.confirm("Вы действительно хотите удалить товар")) {
+            dispatch(removeItem(items));
+        }
+    }
+
+    if (!items) {
+        return <CartEmpty/>
+    }
     
     
   return (
-    <div className='cart'>
-        {
-            carts.length > 0 ? (
-    <div>
+    <div className='cart'>  
         <div className='cart__title'>Корзина</div>
         <div className='cart__content'>
             <div>
                 <div>
-                    {carts.map((obj) => (
+                    {items.map((item) => (
                     <div className='cart-card'>
-                        <div className='cart-card__icons' onClick={() => onRemove(obj.id)}  >
-                            <img src='./img/delete.svg' alt='delete' />
+                        <div className='cart-card__icons'  >
+                            <img src='./img/delete.svg' alt='delete' onClick={onClickRemove}/>
                         </div>
                         <div className='cart-card__content'>
                             <div className='cart-card__image'>
-                                <img width={136} height={146} src={obj.imageUrl} alt='pods' />
+                                <img width={136} height={146} src={item.imageUrl} alt='pods' />
                             </div>
                             <div className='cart-card__pricetag'>
-                                <div className='cart-card__title'>{obj.title}</div>
-                                <div className='cart-card__price'>{obj.price}$</div>
+                                <div className='cart-card__title'>{item.title}</div>
+                                <div className='cart-card__price'>{item.price}$</div>
                             </div>
                         </div>
                     </div>
@@ -58,23 +70,8 @@ function Cart ({onRemove} )  {
             </div>
         </div>
     </div>
-        ) :
         
-        ( 
-        <div className='cart-empty'>
-            <div className='cart-empty__content'>
-                <div className='cart-empty__image'>
-                    <img width={409} height={315} src='./img/cart_empty.svg' alt='cart_empty' />
-                </div>
-                <div className='cart-empty__title'>Корзина пуста</div>
-                <div className='cart-empty__subtitle'>Но это никогда не поздно исправить :)</div>
-                <Link to='/'>
-                    <button className='button__empty'>В каталог товаров</button>
-                </Link>
-            </div>
-        </div>
-         )}
-    </div>
+    
   )
 }
 
