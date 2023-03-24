@@ -2,11 +2,12 @@ import React from "react";
 import Search from "./Search";
 import {Link} from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { selectCart } from "../redax/slices/cartSlice";
 
 
 
 function Header() {
-    const {items} = useSelector((state)=>state.cart)
+    const {items} = useSelector(selectCart)
 
     return (
         
