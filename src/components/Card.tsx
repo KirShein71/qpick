@@ -2,7 +2,16 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {addItem} from '../redax/slices/cartSlice'
 
-function Card({imageUrl, title, price, id, onClickFavorite, onFavorite, favorited, onPlus }) {
+type CardProps = {
+    id: string;
+    imageUrl: string;
+    title: string;
+    price: number;
+    onClickFavorite: any;
+    favorited: any;
+}
+
+const Card: React.FC<CardProps> = ({imageUrl, title, price, id, onClickFavorite, favorited }) => {
     const [isFavorite, setIsFavorite] = React.useState(favorited)
     const [isAdded, setIsAdded] = React.useState(true)
     const dispatch = useDispatch()

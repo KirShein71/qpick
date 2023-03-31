@@ -64,9 +64,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/favorite" element={<Favorite/>}/>
-                    <Route path="/cart" 
-                        element={<Cart 
-                    />}/>
+                    <Route path="/cart" element={<Cart/>}/>
                     <Route path="/chekout" element={<Chekout/>}/>
                     <Route path="/framed" element={<Framed/>}/>
                 </Routes>

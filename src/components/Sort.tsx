@@ -1,12 +1,21 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {setSort} from '../redax/slices/sortSlice'
+import {selectSort, setSort} from '../redax/slices/sortSlice'
+
+
 
 function Sort() {
     const dispatch = useDispatch();
-    const sort = useSelector(state => state.sort.sort)
-    const sortRef = React.useRef( )
-    const list = [
+    const sort = useSelector(selectSort)
+    const sortRef = React.useRef<HTMLDivElement>(null)
+    type PopupClick = MouseEvent & {
+        path: Node [];
+    }
+    type SortItem = {
+        name: string;
+        sortProperty: string;
+    };
+    const list: SortItem[] = [
         {name: 'алфавиту (а-я)', sortProperty: '-title'},
         {name: 'алфавиту (я-а)', sortProperty: 'title'},
         {name: 'популярности', sortProperty: 'raiting'}, 
@@ -15,16 +24,16 @@ function Sort() {
         
     ]
     const [open, setOpen] = React.useState(false)
-    const onClickListItem = (obj) => {
+    const onClickListItem = (obj: SortItem) => {
         dispatch(setSort(obj));
         setOpen(false);
     }
 
     React.useEffect(()=>{
-        const hadleClickOutside = (event) => {
-            if (!event.path.includes(sortRef.current)) {
+        const hadleClickOutside = (event: MouseEvent) => {
+            const _event = event as PopupClick;
+            if (sortRef.current && !_event.path.includes(sortRef.current)) {
                 setOpen(false)
-                console.log('click')
             }
         };
 
@@ -45,6 +54,7 @@ function Sort() {
                 <ul>
                   {list.map((obj, i) =>(
                     <li 
+                    key={i}
                     onClick={() => onClickListItem(obj)} 
                     className={sort.sortProperty === obj.sortProperty ? 'active' : ''}>{obj.name}
                 </li>

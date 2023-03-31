@@ -1,6 +1,11 @@
 import React from "react";
 
-function Categories({value, onClickCategory}) {
+type CategoriesProps = {
+    value: number;
+    onClickCategory: (i: number) => void;
+}
+
+const Categories: React.FC<CategoriesProps> = ({value, onClickCategory}) => {
     
     const categories = ['Все', 'Чехлы', 'Проводные наушники', 'Беспроводные наушники']
 
@@ -8,9 +13,12 @@ function Categories({value, onClickCategory}) {
         <div className="categories">
               <ul>
                 {categories.map((categoryName, i) => (
-                    <li onClick={() => onClickCategory(i)} 
+                    <li 
+                    key={i}
+                    onClick={() => onClickCategory(i)} 
                     className={value === i ? 'active' : ''}>
-                    {categoryName}</li>
+                    {categoryName}
+                    </li>
                 ))}
               </ul>
             </div>

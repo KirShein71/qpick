@@ -5,26 +5,26 @@ import Card from '../components/Card';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCategoryId } from '../redax/slices/categorySlice';
+import { selectCategory, setCategoryId } from '../redax/slices/categorySlice';
 import { useNavigate } from 'react-router-dom';
 import AppContext from '../context';
 import qs from 'qs';
-import { fetchGoods } from '../redax/slices/goodsSlice';
+import { fetchGoods, selectGoods } from '../redax/slices/goodsSlice';
+import { selectSortType } from '../redax/slices/sortSlice';
 
 
-function Home()  {
+const Home: React.FC = () => {
     
-    const {searchValue} = React.useContext(AppContext)
-    const {onAddToFavorite} = React.useContext(AppContext)
-    const {onAddToCart} = React.useContext(AppContext)
-    const categoryId = useSelector((state)=>state.category.categoryId)
-    const sortType = useSelector((state) => state.sort.sort.sortProperty)
-    const {items, status} = useSelector((state) => state.goods)
+    const {searchValue}: any = React.useContext(AppContext)
+    const {onAddToFavorite}: any = React.useContext(AppContext)
+    const categoryId = useSelector(selectCategory)
+    const sortType = useSelector(selectSortType)
+    const {items, status} = useSelector(selectGoods)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const isMounted = React.useRef(false)
     
-    const onClickCategory = (id) => {
+    const onClickCategory = (id: number) => {
         dispatch(setCategoryId(id));
     }
 
@@ -37,15 +37,16 @@ function Home()  {
         const search = searchValue ? `search=${searchValue}` : '';
         const category = categoryId > 0 ? `category=${categoryId}` : '';
         const axiosData = async () => {
-            dispatch(fetchGoods({
+            dispatch(
+                // @ts-ignore
+                fetchGoods({
                 sortBy,
                 order,
                 search,
                 category
             }))
         }
-            axiosData()
-            window.scrollTo(0,0);
+            axiosData();
     }, [searchValue, categoryId, sortType])
 
     React.useEffect(()=>{
@@ -74,11 +75,10 @@ function Home()  {
             <div className='content__items'>
             {status === 'loading'
                     ? [...new Array(6)].map((_, index) => <Sceleton key={index}/>)
-                    : items.map((obj) =>
+                    : items.map((obj: any) =>
                     (<Card 
                     key={obj.id} {...obj}
-                    onFavorite={(obj) => onAddToFavorite(obj)}
-                    onPlus={(obj) => onAddToCart(obj)}
+                    onFavorite={(obj: any) => onAddToFavorite(obj)}
                     />))}
             </div>
         </div> 

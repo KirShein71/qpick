@@ -6,7 +6,7 @@ import { selectCart } from "../redax/slices/cartSlice";
 
 
 
-function Header() {
+function Header () {
     const {items} = useSelector(selectCart)
 
     return (

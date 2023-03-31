@@ -2,15 +2,15 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import AppContext from '../context';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeItem } from '../redax/slices/cartSlice';
+import { removeItem, selectCart, selectCartItems } from '../redax/slices/cartSlice';
 import CartEmpty from '../components/CartEmpty';
 
 
 
-function Cart ({id} )  {
-    const {carts} = React.useContext(AppContext)
-    const totalPrice = carts.reduce((items, obj)=>obj.price+items, 15)
-    const items = useSelector((state) => state.cart.items)
+const Cart: React.FC = () => {
+    const {carts}: any = React.useContext(AppContext)
+    const totalPrice = carts.reduce((items: number, obj: any)=>obj.price+items, 15)
+    const items = useSelector(selectCartItems)
     const dispatch = useDispatch()
 
     const onClickRemove = () => {
@@ -30,7 +30,7 @@ function Cart ({id} )  {
         <div className='cart__content'>
             <div>
                 <div>
-                    {items.map((item) => (
+                    {items.map((item: any) => (
                     <div className='cart-card'>
                         <div className='cart-card__icons'  >
                             <img src='./img/delete.svg' alt='delete' onClick={onClickRemove}/>
