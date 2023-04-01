@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {addItem} from '../redax/slices/cartSlice'
 
+
 type CardProps = {
     id: string;
     imageUrl: string;
@@ -23,7 +24,6 @@ const Card: React.FC<CardProps> = ({imageUrl, title, price, id, onClickFavorite,
             title,
             price,
             imageUrl,
-            
         };
         setIsAdded(!isAdded);
         dispatch(addItem(item))

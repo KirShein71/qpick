@@ -4,13 +4,14 @@ import Banner from '../components/Banner';
 import Card from '../components/Card';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectCategory, setCategoryId } from '../redax/slices/categorySlice';
 import { useNavigate } from 'react-router-dom';
 import AppContext from '../context';
 import qs from 'qs';
 import { fetchGoods, selectGoods } from '../redax/slices/goodsSlice';
 import { selectSortType } from '../redax/slices/sortSlice';
+import { useAppDispatch } from '../redax/store';
 
 
 const Home: React.FC = () => {
@@ -20,7 +21,7 @@ const Home: React.FC = () => {
     const categoryId = useSelector(selectCategory)
     const sortType = useSelector(selectSortType)
     const {items, status} = useSelector(selectGoods)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const isMounted = React.useRef(false)
     
@@ -38,7 +39,6 @@ const Home: React.FC = () => {
         const category = categoryId > 0 ? `category=${categoryId}` : '';
         const axiosData = async () => {
             dispatch(
-                // @ts-ignore
                 fetchGoods({
                 sortBy,
                 order,
