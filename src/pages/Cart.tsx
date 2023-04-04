@@ -3,16 +3,16 @@ import {Link} from 'react-router-dom';
 import AppContext from '../context';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeItem, selectCart, selectCartItems } from '../redax/slices/cartSlice';
-import { useAppDispatch } from '../redax/store';
+
 import CartEmpty from '../components/CartEmpty';
 
 
 
 const Cart: React.FC = () => {
-    const {carts}: any = React.useContext(AppContext)
-    const totalPrice = carts.reduce((items: number, obj: any)=>obj.price+items, 15)
+    
     const items = useSelector(selectCartItems)
-    const dispatch = useAppDispatch()
+    const totalPrice = items.reduce((items: number, obj: any)=>obj.price+items, 15)
+    const dispatch = useDispatch()
 
     const onClickRemove = () => {
         if (window.confirm("Вы действительно хотите удалить товар")) {
