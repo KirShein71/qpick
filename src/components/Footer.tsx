@@ -28,24 +28,24 @@ const Footer: React.FC = () => {
                     <div className="footer__social">
                         <ul>
                             <li className="footer__list">
-                                <a href="#">
+                                
                                     <img src="./img/VK.svg" alt="vk"/>
-                                </a>
+                               
                             </li>
                             <li className="footer__list">
-                                <a href="#">
+                               
                                     <img src="./img/Instagram.svg" alt="instagram"/>
-                                </a>
+                               
                             </li>
                             <li className="footer__list">
-                                <a href="#">
+                                
                                     <img src="./img/Telegram.svg" alt="Telegram"/>
-                                </a>
+                               
                             </li>
                             <li className="footer__list">
-                                <a href="#">
+                                
                                     <img src="./img/Whatsapp.svg" alt="Whatsapp"/>
-                                </a>
+                               
                             </li>
                         </ul>
                     </div>
