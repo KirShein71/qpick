@@ -4,7 +4,7 @@
     &__menu {
         display: flex;
         justify-content: space-between;
-        @media(max-width:767px) {
+        @media(max-width:1024px) {
           justify-content: space-around;
         }
          
@@ -13,8 +13,9 @@
         font-weight: 700;
         font-size: 25px;
         color: #101010;  
-        @media (max-width: 535px) {
+        @media (max-width: 450px) {
             margin-top: 10px;
+            font-size: 19px;
         }
         @media (max-width: 320px) {
             font-size: 15px;
@@ -22,13 +23,38 @@
     }
     
     &-logo {
-        display: flex;
-        &__favorite {
-            margin-right: 20px;
-        }
         @media (max-width: 450px) {
-            margin-top: 15px;
-            
+            margin-top: 10px;
+        }
+    }
+
+    &__number {
+        position: absolute;
+        top: 35px;
+        right: -10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        color: #fff;
+        font-size: 15px;
+        background-color: #ffa542;
+        border-radius: 50%;
+        @media(max-width: 1024px) {
+            right: 52px;
+        }
+        @media(max-width: 991px) {
+            right: 47px;
+        }
+        @media(max-width: 768px) {
+            right: 13px;
+        }
+        @media(max-width: 575px) {
+            right: 3px;
+        }
+        @media(max-width: 450px) {
+            top: 45px;
         }
     }
 }  

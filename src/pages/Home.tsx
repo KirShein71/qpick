@@ -17,7 +17,6 @@ import { useAppDispatch } from '../redax/store';
 const Home: React.FC = () => {
     
     const {searchValue}: any = React.useContext(AppContext)
-    const {onAddToFavorite}: any = React.useContext(AppContext)
     const categoryId = useSelector(selectCategory)
     const sortType = useSelector(selectSortType)
     const {items, status} = useSelector(selectGoods)
@@ -78,7 +77,6 @@ const Home: React.FC = () => {
                     : items.map((obj: any) =>
                     (<Card 
                     key={obj.id} {...obj}
-                    onFavorite={(obj: any) => onAddToFavorite(obj)}
                     />))}
             </div>
         </div> 

@@ -1,0 +1,23 @@
+.cart-empty {
+    &__content {
+        margin-top: 30px;
+    }
+    &__image {
+        width: 100%;
+        max-width: 409px;
+        height: auto;
+        margin: 0 auto;
+    }
+    &__title {
+        margin-top: 30px;
+        font-weight: 500;
+        font-size: 30px;
+        text-align: center;
+    }
+    &__subtitle {
+        margin-bottom: 30px;
+        color: #838383;
+        font-size: 20px;
+        text-align: center;
+    }
+}

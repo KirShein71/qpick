@@ -6,8 +6,15 @@
     font-size: 16px;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 768px) {
+        padding: 7px 14px;
+        width: 380px;
+    }
+    @media(max-width: 575px) {
+        width: 300px;
+    }
     @media (max-width: 450px) {
-        width: 175px;
+        width: 190px;
     }
     
     input {

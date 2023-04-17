@@ -4,24 +4,19 @@ import React from 'react'
 const Footer: React.FC = () => {
     return (
         <div className="footer">
-            <div className="container">
                 <div className="footer__content">
                     <Link to='/'>
                         <div className="footer__title">QPICK</div>
                     </Link>
                     <div className="footer__contacts">
-                        <Link to="/favorite">
                             <div className="footer__favorite">Избранное</div>
-                        </Link>
                         <Link to='/cart'>
                             <div className="footer__cart">Корзина</div>
                         </Link>
                             <div className="footer__contact">Контакты</div>
                     </div>
                     <div className="footer__service">
-                        <Link to="/condition">
                             <div className="footer__guarantee">Условия сервиса</div>
-                        </Link>
                         <div className="footer-language">
                             <div className="footer-language__logo">
                                 <img src="./img/logo_language.svg" alt="logo" />
@@ -55,7 +50,6 @@ const Footer: React.FC = () => {
                         </ul>
                     </div>
                 </div>
-            </div>
         </div>
     )
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import {addItem} from '../redax/slices/cartSlice'
 
 
@@ -8,12 +8,10 @@ type CardProps = {
     imageUrl: string;
     title: string;
     price: number;
-    onClickFavorite: any;
-    favorited: any;
+   
 }
 
-const Card: React.FC<CardProps> = ({imageUrl, title, price, id, onClickFavorite, favorited }) => {
-    const [isFavorite, setIsFavorite] = React.useState(favorited)
+const Card: React.FC<CardProps> = ({imageUrl, title, price, id}) => {
     const [isAdded, setIsAdded] = React.useState(true)
     const dispatch = useDispatch()
     
@@ -29,23 +27,9 @@ const Card: React.FC<CardProps> = ({imageUrl, title, price, id, onClickFavorite,
         dispatch(addItem(item))
     }
 
-    // onClickFavorite = () => {
-    //     onFavorite({title, imageUrl, price, id})
-    //     setIsFavorite(!isFavorite)
-    // }
-
-    // onClickPlus = () => {
-    //     onPlus({title, imageUrl, price, id})
-    //     setIsAdded(!isAdded)
-    // }
-       
-
     return(
         <div className="card">
             <div className="card__icons" >
-                <div className="card__icons_favorite" onClick={onClickFavorite}>
-                    <img width={20} height={18} src={isFavorite ? "./img/favorite__liked.svg" : "./img/favorite_card.svg"} alt="heart"/>
-                </div>
                 <div className="card__icons_plus" onClick={onClickAdd}>
                     <img width={30} height={28} src={isAdded ? "./img/plus.svg" : "./img/plus__ok.svg"} alt="plus" />
                 </div>

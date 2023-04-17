@@ -1,6 +1,10 @@
 .categories {
+    @media(max-width: 575px) {
+        overflow: auto;
+    }
     ul {
       display: flex;
+      
   
       li {
         background-color: #f9f9f9;
@@ -11,7 +15,15 @@
         list-style: none;
         cursor: pointer;
         transition: background-color 0.1s ease-in-out;
-        
+        @media(max-width: 1024px) {
+            font-size: 13px;
+        }
+        @media(max-width:991px) {
+            font-size: 12px;
+        }
+        @media(max-width: 768px) {
+            text-align: center;
+        }
   
         &:hover {
           background-color: darken(#f9f9f9, 2%);

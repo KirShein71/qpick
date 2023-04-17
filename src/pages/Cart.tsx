@@ -1,26 +1,21 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
-import AppContext from '../context';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeItem, selectCart, selectCartItems } from '../redax/slices/cartSlice';
+import {  useSelector } from 'react-redux';
+import { selectCartItems } from '../redax/slices/cartSlice';
 
 import CartEmpty from '../components/CartEmpty';
+import CartCard from '../components/CartCard';
+
 
 
 
 const Cart: React.FC = () => {
     
     const items = useSelector(selectCartItems)
-    const totalPrice = items.reduce((items: number, obj: any)=>obj.price+items, 15)
-    const dispatch = useDispatch()
+    const totalPrice = items.reduce((items: number, obj: any)=>obj.price+items, 0)
+    
 
-    const onClickRemove = () => {
-        if (window.confirm("Вы действительно хотите удалить товар")) {
-            dispatch(removeItem(items));
-        }
-    }
-
-    if (!items) {
+    if (!totalPrice) {
         return <CartEmpty/>
     }
     
@@ -32,42 +27,16 @@ const Cart: React.FC = () => {
             <div>
                 <div>
                     {items.map((item: any) => (
-                    <div className='cart-card'>
-                        <div className='cart-card__icons'  >
-                            <img src='./img/delete.svg' alt='delete' onClick={onClickRemove}/>
-                        </div>
-                        <div className='cart-card__content'>
-                            <div className='cart-card__image'>
-                                <img width={136} height={146} src={item.imageUrl} alt='pods' />
-                            </div>
-                            <div className='cart-card__pricetag'>
-                                <div className='cart-card__title'>{item.title}</div>
-                                <div className='cart-card__price'>{item.price}$</div>
-                            </div>
-                        </div>
-                    </div>
+                    <CartCard {...item}/>
                     ))}
-                </div>
-                <div className='cart-delivery'>
-                    <div className='cart-delivery__card'>
-                        <div className='cart-delivery__title'>Способ получения</div>
-                        <div className='cart-delivery__bottom'>
-                            <div className='cart-delivery__bottom-title'>Доставка курьером</div> 
-                            <div className='cart-delivery__bottom-price'>15$</div> 
-                        </div>
-                    </div>
                 </div>
             </div>
             <div className='cart-total'>
                 <div className='cart-total__content'>
                     <div className='cart-total__text'>ИТОГО</div>
-                    
                     <div className='cart-total__price'>{totalPrice}$</div>
-                   
                 </div>
-                <Link to="/chekout">
-                    <button className='button__cart' >Перейти к оформлению</button>
-                </Link>
+                <button className='button__cart' >Перейти к оформлению</button>
             </div>
         </div>
     </div>
